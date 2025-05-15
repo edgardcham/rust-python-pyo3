@@ -14,7 +14,6 @@ def benchmark(n: int) -> None:
     py_result = fibonacci_python(n)
     py_time = time.time() - start_time
 
-    # Benchmark Rust implementation
     start_time = time.time()
     rust_result = fibonacci_rust(n)
     rust_time = time.time() - start_time

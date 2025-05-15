@@ -9,7 +9,6 @@ fn fibonacci_rust(n: u64) -> PyResult<u64> {
     })
 }
 
-/// A Python module implemented in Rust.
 #[pymodule]
 fn rust_python_fib(_py: Python<'_>, m: &Bound<'_, PyModule>) -> PyResult<()> {
     m.add_function(wrap_pyfunction!(fibonacci_rust, m)?)?;
