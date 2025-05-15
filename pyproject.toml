@@ -1,0 +1,36 @@
+[build-system]
+requires = ["maturin>=1.8.6"]
+build-backend = "maturin"
+
+[project]
+name = "rust_python_fib"
+version = "0.1.0"
+description = "Fibonacci implementation comparison between Python and Rust"
+readme = "README.md"
+requires-python = ">=3.12.10"
+
+[tool.maturin]
+module-name = "rust_python_fib"
+dependencies = [
+    "maturin>=1.8.6",
+]
+
+[dependency-groups]
+dev = [
+    "poethepoet>=0.34.0",
+    "pyright>=1.1.400",
+    "ruff>=0.11.10",
+]
+
+[tool.uv]
+
+[tool.poe.tasks]
+lint      = { cmd = "ruff check ." }
+
+format    = [
+  { cmd = "ruff check --select I --fix ." },
+  { cmd = "ruff format ." }
+]
+
+typecheck = { cmd = "pyright" }
+check     = ["format", "lint", "typecheck"]
